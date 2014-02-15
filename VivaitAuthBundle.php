@@ -1,6 +1,6 @@
 <?php
 
-namespace Viva\AuthBundle;
+namespace Vivait\AuthBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

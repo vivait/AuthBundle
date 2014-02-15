@@ -1,8 +1,8 @@
-<script src="{{ asset('bundles/vivaauth/js/jquery.idle-timer.js') }}"></script>
+<script src="{{ asset('bundles/vivaitauth/js/jquery.idle-timer.js') }}"></script>
 <script>
 	$(document).idleTimer(300000); // 5 minutes
 	var sendHeartbeat = function () {
-		var loadUrl = "{{ path('viva_auth_heartbeat') }}?status=" + $.data(document, 'idleTimer');
+		var loadUrl = "{{ path('vivait_auth_heartbeat') }}?status=" + $.data(document, 'idleTimer');
 		$.ajaxSetup({ cache: false });
 		$.get(loadUrl);
 	}

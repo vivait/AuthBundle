@@ -1,8 +1,8 @@
 <?php
 
-	namespace Viva\AuthBundle\Command;
+	namespace Vivait\AuthBundle\Command;
 
-	use Viva\AuthBundle\Entity\Tenant;
+	use Vivait\AuthBundle\Entity\Tenant;
 	use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 	use Symfony\Component\Console\Input\InputArgument;
 	use Symfony\Component\Console\Input\InputInterface;

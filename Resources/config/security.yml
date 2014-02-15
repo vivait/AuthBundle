@@ -1,12 +1,12 @@
 security:
     encoders:
-        Viva\AuthBundle\Controller\UserController:
+        Vivait\AuthBundle\Controller\UserController:
             algorithm:        sha512
 
-        Viva\AuthBundle\Controller\AuthController:
+        Vivait\AuthBundle\Controller\AuthController:
             algorithm:        sha512
 
-        Viva\AuthBundle\Entity\User:
+        Vivait\AuthBundle\Entity\User:
             algorithm:        sha512
 
     role_hierarchy:
@@ -15,14 +15,14 @@ security:
 
     providers:
         viva:
-            entity: { class: Viva\AuthBundle\Entity\User, property: username }
+            entity: { class: Vivait\AuthBundle\Entity\User, property: username }
 
     firewalls:
         secured_area:
             pattern: ^/
             form_login:
-                check_path: viva_auth_authenticate
-                login_path: viva_auth_login
+                check_path: vivait_auth_authenticate
+                login_path: vivait_auth_login
                 always_use_default_target_path: true
                 default_target_path: viva_app_homepage
             logout:

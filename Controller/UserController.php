@@ -1,11 +1,11 @@
 <?php
 
-	namespace Viva\AuthBundle\Controller;
+	namespace Vivait\AuthBundle\Controller;
 
 	use Doctrine\ORM\EntityRepository;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Viva\AuthBundle\Entity\User;
+	use Vivait\AuthBundle\Entity\User;
 	use Doctrine\ORM\Query;
 
 	class UserController extends Controller {

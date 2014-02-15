@@ -1,13 +1,13 @@
 <?php
 
-namespace Viva\AuthBundle\Controller;
+namespace Vivait\AuthBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\FormError;
-use Viva\AuthBundle\Entity\User;
+use Vivait\AuthBundle\Entity\User;
 
 
 class AuthController extends Controller{
@@ -119,7 +119,7 @@ class AuthController extends Controller{
 		$tenants = $user->getTenants();
 		$new_tenant = $request->get('_tenant');
 		$session = $request->getSession();
-		$current_tenant = $this->get('viva_auth.tenant_manager')->getTenant();
+		$current_tenant = $this->get('vivait_auth.tenant_manager')->getTenant();
 
 		if ($new_tenant) {
 

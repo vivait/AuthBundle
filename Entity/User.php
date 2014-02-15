@@ -1,6 +1,6 @@
 <?php
 
-	namespace Viva\AuthBundle\Entity;
+	namespace Vivait\AuthBundle\Entity;
 
 	use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 	use Doctrine\ORM\Mapping as ORM;
@@ -23,7 +23,7 @@
 	 * @UniqueEntity("username")
 	 * @UniqueEntity("email")
 	 * @ORM\Table(name="Users")
-	 * @ORM\Entity(repositoryClass="Viva\AuthBundle\Entity\UserRepository")
+	 * @ORM\Entity(repositoryClass="Vivait\AuthBundle\Entity\UserRepository")
 	 */
 	class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 

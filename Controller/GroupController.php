@@ -1,11 +1,11 @@
 <?php
 
-namespace Viva\AuthBundle\Controller;
+namespace Vivait\AuthBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Viva\AuthBundle\Entity\Group;
+use Vivait\AuthBundle\Entity\Group;
 use Doctrine\ORM\Query;
 
 class GroupController extends Controller

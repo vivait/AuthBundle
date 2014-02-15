@@ -1,5 +1,5 @@
 <?php
-namespace Viva\AuthBundle\Entity;
+namespace Vivait\AuthBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

@@ -1,10 +1,10 @@
 <?php
 
-	namespace Viva\AuthBundle\Controller;
+	namespace Vivait\AuthBundle\Controller;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Viva\AuthBundle\Entity\Tenant;
+	use Vivait\AuthBundle\Entity\Tenant;
 
 	class TenantController extends Controller {
 		public function indexAction() {

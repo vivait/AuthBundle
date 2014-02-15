@@ -1,6 +1,6 @@
 {% extends 'VivaitAuthBundle:Default:base.html.twig' %}
 {% block sectiontitle %}User Management{% endblock %}
-{% block sectionlinks %}<a href="{{ path('viva_auth_user_edit') }}" class="ajax-dialog btn"><i class="glyphicon glyphicon-plus-sign"></i> Add User</a>{% endblock %}
+{% block sectionlinks %}<a href="{{ path('vivait_auth_user_edit') }}" class="ajax-dialog btn"><i class="glyphicon glyphicon-plus-sign"></i> Add User</a>{% endblock %}
 
 {% block section %}
   <div class="row">
@@ -24,7 +24,7 @@
 		{% for row in db %}
 			<tr>
 				<td>{{ row.active|yesnoicon|raw }}</td>
-				<td><a href="{{ path('viva_auth_user_edit', {'id': row.id})}}" class="ajax-dialog">{{ row.username }}</a></td>
+				<td><a href="{{ path('vivait_auth_user_edit', {'id': row.id})}}" class="ajax-dialog">{{ row.username }}</a></td>
 				<td>{{ row.fullname }}</td>
 				<td>{{ row.initials }}</td>
 				<td>{{ row.email }}</td>
@@ -43,7 +43,7 @@
                     {% for tenant in row.tenants %}<div class="cell-divider">{{ tenant.tenant }}</div>{% endfor %}
 				</td>
 				<td class="action">
-					<a href="{{ path('viva_auth_user_delete', {'id': row.id})}}" class="confirm-message" data-confirm-message="Are you sure that you want to delete this item?"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="{{ path('vivait_auth_user_delete', {'id': row.id})}}" class="confirm-message" data-confirm-message="Are you sure that you want to delete this item?"><i class="glyphicon glyphicon-trash"></i></a>
 				</td>
 			</tr>
 		{% endfor %}

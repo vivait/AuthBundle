@@ -1,66 +1,66 @@
-viva_auth_logout:
+vivait_auth_logout:
     pattern: /logout
 
-viva_auth_login:
+vivait_auth_login:
     pattern: /login
     defaults: { _controller: VivaitAuthBundle:Auth:login }
 
-viva_auth_authenticate:
+vivait_auth_authenticate:
     pattern: /authenticate
 
-viva_auth_user:
+vivait_auth_user:
     pattern: /auth/users/
     defaults: { _controller: VivaitAuthBundle:User:index }
 
-viva_auth_user_edit:
+vivait_auth_user_edit:
     pattern: /auth/users/edit
     defaults: { _controller: VivaitAuthBundle:User:edit }
 
-viva_auth_user_delete:
+vivait_auth_user_delete:
     pattern: /auth/users/delete
     defaults: { _controller: VivaitAuthBundle:User:delete }
 
-#viva_auth_user_twofactor:
+#vivait_auth_user_twofactor:
 #    pattern: /user/twofactor
 #    defaults: { _controller: VivaitAuthBundle:User:twofactor }
 #
-viva_auth_group:
+vivait_auth_group:
     pattern: /auth/groups/
     defaults: { _controller: VivaitAuthBundle:Group:index }
 
-viva_auth_group_edit:
+vivait_auth_group_edit:
     pattern: /auth/groups/edit
     defaults: { _controller: VivaitAuthBundle:Group:edit }
 
-viva_auth_group_delete:
+vivait_auth_group_delete:
     pattern: /auth/groups/delete
     defaults: { _controller: VivaitAuthBundle:Group:delete }
 
-viva_auth_changepassword:
+vivait_auth_changepassword:
     pattern: /auth/changepassword
     defaults: { _controller: VivaitAuthBundle:Auth:changepassword }
 
-viva_auth_changetenant:
+vivait_auth_changetenant:
     pattern: /auth/changetenant
     defaults: { _controller: VivaitAuthBundle:Auth:changetenant }
 
-viva_auth_heartbeat:
+vivait_auth_heartbeat:
     pattern: /auth/heartbeat
     defaults: { _controller: VivaitAuthBundle:Auth:heartbeat }
 
-viva_auth_tenant:
+vivait_auth_tenant:
     pattern: /auth/tenants/
     defaults: { _controller: VivaitAuthBundle:Tenant:index }
 
-viva_auth_tenant_edit:
+vivait_auth_tenant_edit:
     pattern: /auth/tenants/edit
     defaults: { _controller: VivaitAuthBundle:Tenant:edit }
 
-viva_auth_tenant_delete:
+vivait_auth_tenant_delete:
     pattern: /auth/tenants/delete
     defaults: { _controller: VivaitAuthBundle:Tenant:delete }
 
-viva_auth_impersonate:
+vivait_auth_impersonate:
     pattern: /auth/impersonate
     defaults: { _controller: VivaitAuthBundle:User:impersonate }
 

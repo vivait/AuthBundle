@@ -1,5 +1,5 @@
 <?php
-namespace Viva\AuthBundle\EventListener;
+namespace Vivait\AuthBundle\EventListener;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Monolog\Logger;
@@ -9,12 +9,12 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\SecurityContext;
-use Viva\AuthBundle\Entity\Tenant;
-use Viva\AuthBundle\Entity\User;
+use Vivait\AuthBundle\Entity\Tenant;
+use Vivait\AuthBundle\Entity\User;
 
 class TenantManager implements EventSubscriberInterface
 {
-	const SESSION_VAR = 'viva_auth_tenant';
+	const SESSION_VAR = 'vivait_auth_tenant';
 
 	/* @var $security_context SecurityContext */
 	protected $security_context;

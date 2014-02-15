@@ -1,6 +1,6 @@
 <?php
 
-namespace Viva\AuthBundle\Entity;
+namespace Vivait\AuthBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
