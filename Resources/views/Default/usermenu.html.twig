@@ -1,0 +1,47 @@
+{% if app.user %}
+	{% if app.user.licenseduntil|date_modify("-7 days") < date("now") %}
+		<li class="dropdown" style="background-color: #cd0a0a;">
+			<a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<i class="glyphicon glyphicon-warning-sign"></i>
+			</a>
+			<ul class="dropdown-menu pull-right">
+				<li role="presentation" class="dropdown-header">This product will expire soon</li>
+				<li role="presentation" class="dropdown-header">Licensed until {{ app.user.licenseduntil|date('d M Y H:i') }}</li>
+			</ul>
+		</li>
+	{% endif %}
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			<i class="glyphicon glyphicon-user glyphicon-white"></i> {{ app.user.fullname|default('User') }} {% include 'VivaAuthBundle:Default:statusbadge.html.twig' %}
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu pull-right">
+			<li><a class="ajax-dialog" href="{{ path('viva_auth_changepassword') }}"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
+			{% if app.user.tenants|length > 1 %}
+				<li><a class="ajax-dialog" href="{{ path('viva_auth_changetenant') }}"><i class="glyphicon glyphicon-share-alt"></i> Change Tenant</a></li>
+			{% endif %}
+			<li class="divider"></li>
+
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<li><a href="{{ path('viva_auth_user') }}"><i class="glyphicon glyphicon-user"></i> User Management</a></li>
+				<li><a href="{{ path('viva_auth_group') }}"><i class="glyphicon glyphicon-th-large"></i> Group Management</a></li>
+				<li><a href="{{ path('viva_auth_tenant') }}"><i class="glyphicon glyphicon-tower"></i> Tenant Management</a></li>
+				<li class="divider"></li>
+			{% endif %}
+
+			{#<li><a class="ajax-dialog" href="{{ path('viva_auth_user_twofactor') }}"><i class="glyphicon glyphicon-record"></i> Two Factor Authentication</a></li>#}
+
+			{% if is_granted('ROLE_ALLOWED_TO_SWITCH') or is_granted('ROLE_PREVIOUS_ADMIN') %}
+				{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+					<li><a href="{{ path('viva_app_homepage', {'_switch_user': '_exit'}) }}"><i class="glyphicon glyphicon-eye-close"></i> Exit Impersonation</a></li>
+				{% else %}
+					<li><a class="ajax-dialog" href="{{ path('viva_auth_impersonate') }}"><i class="glyphicon glyphicon-eye-open"></i> Impersonate User</a></li>
+				{% endif %}
+				<li class="divider"></li>
+			{% endif %}
+
+			<li><a href="{{ path('viva_auth_logout') }}"><i class="glyphicon glyphicon-eject"></i> Log Out</a></li>
+			<li role="presentation" class="dropdown-header">Licensed until {{ app.user.licenseduntil|date('d M Y H:i') }}</li>
+		</ul>
+	</li>
+{% endif %}

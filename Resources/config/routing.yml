@@ -1,0 +1,66 @@
+viva_auth_logout:
+    pattern: /logout
+
+viva_auth_login:
+    pattern: /login
+    defaults: { _controller: VivaAuthBundle:Auth:login }
+
+viva_auth_authenticate:
+    pattern: /authenticate
+
+viva_auth_user:
+    pattern: /auth/users/
+    defaults: { _controller: VivaAuthBundle:User:index }
+
+viva_auth_user_edit:
+    pattern: /auth/users/edit
+    defaults: { _controller: VivaAuthBundle:User:edit }
+
+viva_auth_user_delete:
+    pattern: /auth/users/delete
+    defaults: { _controller: VivaAuthBundle:User:delete }
+
+#viva_auth_user_twofactor:
+#    pattern: /user/twofactor
+#    defaults: { _controller: VivaAuthBundle:User:twofactor }
+#
+viva_auth_group:
+    pattern: /auth/groups/
+    defaults: { _controller: VivaAuthBundle:Group:index }
+
+viva_auth_group_edit:
+    pattern: /auth/groups/edit
+    defaults: { _controller: VivaAuthBundle:Group:edit }
+
+viva_auth_group_delete:
+    pattern: /auth/groups/delete
+    defaults: { _controller: VivaAuthBundle:Group:delete }
+
+viva_auth_changepassword:
+    pattern: /auth/changepassword
+    defaults: { _controller: VivaAuthBundle:Auth:changepassword }
+
+viva_auth_changetenant:
+    pattern: /auth/changetenant
+    defaults: { _controller: VivaAuthBundle:Auth:changetenant }
+
+viva_auth_heartbeat:
+    pattern: /auth/heartbeat
+    defaults: { _controller: VivaAuthBundle:Auth:heartbeat }
+
+viva_auth_tenant:
+    pattern: /auth/tenants/
+    defaults: { _controller: VivaAuthBundle:Tenant:index }
+
+viva_auth_tenant_edit:
+    pattern: /auth/tenants/edit
+    defaults: { _controller: VivaAuthBundle:Tenant:edit }
+
+viva_auth_tenant_delete:
+    pattern: /auth/tenants/delete
+    defaults: { _controller: VivaAuthBundle:Tenant:delete }
+
+viva_auth_impersonate:
+    pattern: /auth/impersonate
+    defaults: { _controller: VivaAuthBundle:User:impersonate }
+

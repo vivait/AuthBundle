@@ -1,0 +1,20 @@
+{% extends 'VivaitBootstrapBundle:Default:base.html.twig' %}
+{% from 'VivaitBootstrapBundle:Default:flash.html.twig' import session_flash %}
+
+
+{% block navbar %}
+	{% include 'VivaAuthBundle:Default:menu.html.twig' %}
+{% endblock navbar %}
+
+
+{% block title %}Authentication{% endblock %}
+
+
+{% block head_bottom %}
+	{#<style>#}
+		{#body {background-image:url("{{ asset('bundles/vivaitbootstrap/img/bg4.jpg') }}");}#}
+	{#</style>#}
+{% endblock head_bottom %}
+
+
+

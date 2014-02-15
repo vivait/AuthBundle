@@ -1,0 +1,8 @@
+<h1>Impersonate User</h1>
+
+<p>Please select a user:</p>
+<div class="list-group">
+	{% for row in db %}
+		<a href="{{ path('viva_app_homepage', {'_switch_user':row.username}) }}" class="list-group-item">{{ row.fullname }}</a>
+	{% endfor %}
+</div>

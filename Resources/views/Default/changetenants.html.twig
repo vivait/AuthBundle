@@ -1,0 +1,8 @@
+<h1>Switch Tenants</h1>
+
+<p>Please select a tenant:</p>
+<div class="list-group">
+	{% for tenant in tenants %}
+		<a href="{{ path('viva_auth_changetenant', {'_tenant': tenant.id}) }}" class="list-group-item ajax {% if app.user.currenttenant == tenant %} active{% endif %}">{{ tenant.tenant }}</a>
+	{% endfor %}
+</div>

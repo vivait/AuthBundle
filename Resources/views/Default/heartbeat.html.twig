@@ -1,0 +1,19 @@
+<script src="{{ asset('bundles/vivaauth/js/jquery.idle-timer.js') }}"></script>
+<script>
+	$(document).idleTimer(300000); // 5 minutes
+	var sendHeartbeat = function () {
+		var loadUrl = "{{ path('viva_auth_heartbeat') }}?status=" + $.data(document, 'idleTimer');
+		$.ajaxSetup({ cache: false });
+		$.get(loadUrl);
+	}
+	setInterval(sendHeartbeat, 55000);
+	$(document).bind("active.idleTimer", function () {
+		$("#onlinestatus").html('<span class="label label-success"><i class="glyphicon glyphicon-ok-sign"></i> Online</span>');
+	});
+	$(document).bind("idle.idleTimer", function () {
+		$("#onlinestatus").html('<span class="label label-warning"><i class="glyphicon glyphicon-time"></i> Away</span>');
+	});
+	sendHeartbeat();
+</script>			
+
+

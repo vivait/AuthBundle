@@ -1,0 +1,25 @@
+parameters:
+#    viva_auth.example.class: Viva\AuthBundle\Example
+
+services:
+#    viva_auth.example:
+#        class: %viva_auth.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+#services:
+#    viva_user_provider:
+#        class: "Viva\AuthBundle\Entity\UserRepository"
+
+    viva_auth.tenant_manager:
+        class: Viva\AuthBundle\EventListener\TenantManager
+        arguments: ['@security.context', '@logger', '@viva_auth.repository.tenant']
+        tags:
+            - { name: kernel.event_subscriber }
+            - { name: monolog.logger, channel: viva_auth }
+
+    viva_auth.repository.tenant:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - VivaAuthBundle:Tenant

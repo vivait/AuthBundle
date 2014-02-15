@@ -1,0 +1,29 @@
+<div class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="glyphicon glyphicon-bar"></span>
+			<span class="glyphicon glyphicon-bar"></span>
+			<span class="glyphicon glyphicon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="{{ path('viva_app_homepage') }}">{{ viva_app_name }} {% if app.user.tenants|length > 1 %}<small>- {{ app.user.currenttenant.tenant }}{% endif %}</small></a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+					<li><a href="{{ path('viva_auth_tenant') }}">Tenants</a></li>
+					<li><a href="{{ path('viva_auth_group') }}">Groups</a></li>
+					<li><a href="{{ path('viva_auth_user') }}">Users</a></li>
+		</ul>
+
+
+		<!-- END SEARCH FORM -->
+		<!-- USER BADGE -->
+		<ul class="nav navbar-nav navbar-right">
+			{% include 'VivaAuthBundle:Default:usermenu.html.twig' %}
+		</ul>
+		<!-- END USER BADGE -->
+
+	</div>
+</div>
