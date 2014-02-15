@@ -23,7 +23,7 @@ class AuthController extends Controller{
 			$error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
 			$session->remove(SecurityContext::AUTHENTICATION_ERROR);
 		}
-		return $this->render('VivaAuthBundle:Default:login.html.twig', array(
+		return $this->render('VivaitAuthBundle:Default:login.html.twig', array(
 			// last username entered by the user
 			'last_username' => $session->get(SecurityContext::LAST_USERNAME),
 			'error' => $error,
@@ -111,7 +111,7 @@ class AuthController extends Controller{
 
 		$formtpl['action']   = $this->generateUrl($this->container->get('request')->get('_route'),$request->query->all());
 		$formtpl['title']   = 'Change Password';
-		return $this->render('VivaAuthBundle:Default:changepassword.html.twig', array('form'=>array_merge($formtpl,array('parent'=>$request->query->get('parent',$request->request->get('parent',$request->headers->get('referer')))))));
+		return $this->render('VivaitAuthBundle:Default:changepassword.html.twig', array('form'=>array_merge($formtpl,array('parent'=>$request->query->get('parent',$request->request->get('parent',$request->headers->get('referer')))))));
 	}
 
 	public function changetenantAction(Request $request) {
@@ -128,7 +128,7 @@ class AuthController extends Controller{
 			return $this->render('VivaitBootstrapBundle:Default:redirect.html.twig', array('redirect' => $request->query->get('parent', $request->request->get('parent', $request->headers->get('referer')))));
 		}
 
-		return $this->render('VivaAuthBundle:Default:changetenants.html.twig', array(
+		return $this->render('VivaitAuthBundle:Default:changetenants.html.twig', array(
 			'tenants' => $tenants
 		));
 	}

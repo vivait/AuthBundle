@@ -13,8 +13,8 @@ class GroupController extends Controller
 	
 	public function indexAction() {
 		################################################  SETTINGS  ################################################
-		$repo = 'VivaAuthBundle:Group';
-		$twig = 'VivaAuthBundle:Default:groups.html.twig';
+		$repo = 'VivaitAuthBundle:Group';
+		$twig = 'VivaitAuthBundle:Default:groups.html.twig';
 		############################################################################################################
 		$db = $this->getDoctrine()
 			->getRepository($repo)
@@ -27,7 +27,7 @@ class GroupController extends Controller
 	public function editAction(Request $request) {
 		################################################  SETTINGS  ################################################
 		$name             = 'group';
-		$repo             = 'VivaAuthBundle:Group';
+		$repo             = 'VivaitAuthBundle:Group';
 		$formtpl['title'] = 'Add/Edit ' . ucfirst($name);
 		$obj              = new Group();
 		$key              = $request->query->get('id', 0);
@@ -72,7 +72,7 @@ class GroupController extends Controller
 			->add('name',	'text',array('label' => 'Name'))
 			->add('role',	'text',array('label' => 'Role'))
 			->add('users',	'entity', array(
-				'class' => 'VivaAuthBundle:User',
+				'class' => 'VivaitAuthBundle:User',
 				'property' => 'fullname',
 				'multiple' => true,
 				'required' => true,
@@ -105,7 +105,7 @@ class GroupController extends Controller
 	public function deleteAction(Request $request) {
 		################################################  SETTINGS  ################################################
 		$name         = 'group';
-		$repo         = 'VivaAuthBundle:Group';
+		$repo         = 'VivaitAuthBundle:Group';
 		$id           = $request->query->get('id', 0);
 		$msg_notfound = "The $name could not be found";
 		$msg_success  = "The $name has been removed";

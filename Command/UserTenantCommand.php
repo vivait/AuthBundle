@@ -33,7 +33,7 @@
 
 			#find tenant
 			$tenant = $this->getContainer()->get('doctrine')
-			               ->getRepository('VivaAuthBundle:Tenant')
+			               ->getRepository('VivaitAuthBundle:Tenant')
 			               ->findOneBy(array('code' => $tenantcode));
 
 			if(!$tenant) {
@@ -43,7 +43,7 @@
 
 			#find user
 			$user = $this->getContainer()->get('doctrine')
-			             ->getRepository('VivaAuthBundle:User')
+			             ->getRepository('VivaitAuthBundle:User')
 			             ->findOneBy(array('username' => $username));
 
 			if(!$user) {

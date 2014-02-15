@@ -22,4 +22,4 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
-            - VivaAuthBundle:Tenant
+            - VivaitAuthBundle:Tenant

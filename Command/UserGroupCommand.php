@@ -33,7 +33,7 @@
 
 			#find role
 			$role = $this->getContainer()->get('doctrine')
-			               ->getRepository('VivaAuthBundle:Group')
+			               ->getRepository('VivaitAuthBundle:Group')
 			               ->findOneBy(array('role' => $rolecode));
 
 			if(!$role) {
@@ -43,7 +43,7 @@
 
 			#find user
 			$user = $this->getContainer()->get('doctrine')
-			             ->getRepository('VivaAuthBundle:User')
+			             ->getRepository('VivaitAuthBundle:User')
 			             ->findOneBy(array('username' => $username));
 
 			if(!$user) {

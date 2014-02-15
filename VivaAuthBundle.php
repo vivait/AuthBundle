@@ -4,6 +4,6 @@ namespace Viva\AuthBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class VivaAuthBundle extends Bundle
+class VivaitAuthBundle extends Bundle
 {
 }

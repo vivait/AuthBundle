@@ -12,10 +12,10 @@
 
 		public function indexAction() {
 			################################################  SETTINGS  ################################################
-			$twig = 'VivaAuthBundle:Default:users.html.twig';
+			$twig = 'VivaitAuthBundle:Default:users.html.twig';
 			############################################################################################################
 			$db = $this->getDoctrine()
-			           ->getRepository('VivaAuthBundle:User')
+			           ->getRepository('VivaitAuthBundle:User')
 			           ->findAllFull()
 			           ->getResult();
 
@@ -27,7 +27,7 @@
 
 			################################################  SETTINGS  ################################################
 			$name             = 'user';
-			$repo             = 'VivaAuthBundle:User';
+			$repo             = 'VivaitAuthBundle:User';
 			$formtpl['title'] = 'Add/Edit ' . ucfirst($name);
 			$obj              = new User();
 			$key              = $request->query->get('id', 0);
@@ -85,7 +85,7 @@
 			             ->add('location', 'text', array('label' => 'Location', 'required' => false))
 			             ->add('telephone', 'text', array('label' => 'Telephone', 'required' => false))
 			             ->add('groups', 'entity', array(
-					'class'    => 'VivaAuthBundle:Group',
+					'class'    => 'VivaitAuthBundle:Group',
 					'property' => 'name',
 					'multiple' => true,
 					'required' => true,
@@ -155,7 +155,7 @@
 					'by_reference' => false #USE THIS ALONG WITH A $sendtoqueues->addSendtoUser($this); IN THE addSendtoqueue() FUNCTION TO TRIGGER AN UPDATE WHEN ON INVERSE SIDE
 				))
 			             ->add('tenants', 'entity', array(
-					'class'    => 'VivaAuthBundle:Tenant',
+					'class'    => 'VivaitAuthBundle:Tenant',
 					'property' => 'tenant',
 					'multiple' => true,
 					'attr'     => array('size' => 15),
@@ -207,7 +207,7 @@
 		public function deleteAction(Request $request) {
 			################################################  SETTINGS  ################################################
 			$name         = 'user';
-			$repo         = 'VivaAuthBundle:User';
+			$repo         = 'VivaitAuthBundle:User';
 			$id           = $request->query->get('id', 0);
 			$msg_notfound = "The $name could not be found";
 			$msg_success  = "The $name has been removed";
@@ -231,8 +231,8 @@
 
 		public function impersonateAction(Request $request) {
 			################################################  SETTINGS  ################################################
-			$repo = 'VivaAuthBundle:User';
-			$twig = 'VivaAuthBundle:Default:impersonateuser.html.twig';
+			$repo = 'VivaitAuthBundle:User';
+			$twig = 'VivaitAuthBundle:Default:impersonateuser.html.twig';
 			############################################################################################################
 			$db = $this->getDoctrine()
 			           ->getRepository($repo)
@@ -248,7 +248,7 @@
 //		public function twofactorAction(Request $request) {
 //			################################################  SETTINGS  ################################################
 //			$name             = 'User';
-//			$repo             = 'VivaAuthBundle:User';
+//			$repo             = 'VivaitAuthBundle:User';
 //			$formtpl['title'] = '2-Factor Authentication';
 //			$key              = $this->get('security.context')->getToken()->getUser();
 //			############################################################################################################

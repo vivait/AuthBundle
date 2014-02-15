@@ -31,7 +31,7 @@
 
 			#find user from username
 			$user = $this->getContainer()->get('doctrine')
-			              ->getRepository('VivaAuthBundle:User')
+			              ->getRepository('VivaitAuthBundle:User')
 			              ->findOneBy(array('username' => $username));
 
 
@@ -42,7 +42,7 @@
 
 			#find user from email address
 			$user = $this->getContainer()->get('doctrine')
-			              ->getRepository('VivaAuthBundle:User')
+			              ->getRepository('VivaitAuthBundle:User')
 			              ->findOneBy(array('email' => $email));
 
 
@@ -53,7 +53,7 @@
 
 			#find group
 			$group = $this->getContainer()->get('doctrine')
-			              ->getRepository('VivaAuthBundle:Group')
+			              ->getRepository('VivaitAuthBundle:Group')
 			              ->findOneBy(array('role' => $role));
 
 
@@ -64,7 +64,7 @@
 
 			#find tenant
 			$tenant = $this->getContainer()->get('doctrine')
-			               ->getRepository('VivaAuthBundle:Tenant')
+			               ->getRepository('VivaitAuthBundle:Tenant')
 			               ->findOneBy(array('code' => $tenantcode));
 
 			if($tenantcode && !$tenant) {

@@ -26,7 +26,7 @@
 			$date = $input->getArgument('date');
 
 			$db = $this->getContainer()->get('doctrine')
-				->getRepository('VivaAuthBundle:Tenant')
+				->getRepository('VivaitAuthBundle:Tenant')
 				->findOneBy(array('code'=>$code));
 
 			if($db) {

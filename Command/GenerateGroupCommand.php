@@ -24,7 +24,7 @@
 			$name = $input->getArgument('name');
 
 			$db = $this->getContainer()->get('doctrine')
-			           ->getRepository('VivaAuthBundle:Group')
+			           ->getRepository('VivaitAuthBundle:Group')
 			           ->findOneBy(array('role'=>$code));
 
 			if($db) {

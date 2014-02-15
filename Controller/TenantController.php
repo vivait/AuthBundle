@@ -9,8 +9,8 @@
 	class TenantController extends Controller {
 		public function indexAction() {
 			################################################  SETTINGS  ################################################
-			$repo = 'VivaAuthBundle:Tenant';
-			$twig = 'VivaAuthBundle:Default:tenants.html.twig';
+			$repo = 'VivaitAuthBundle:Tenant';
+			$twig = 'VivaitAuthBundle:Default:tenants.html.twig';
 			############################################################################################################
 			$db = $this->getDoctrine()
 				->getRepository($repo)
@@ -23,7 +23,7 @@
 		public function editAction(Request $request) {
 			################################################  SETTINGS  ################################################
 			$name             = 'tenant';
-			$repo             = 'VivaAuthBundle:Tenant';
+			$repo             = 'VivaitAuthBundle:Tenant';
 			$formtpl['title'] = 'Add/Edit ' . ucfirst($name);
 			$obj              = new Tenant();
 			$key              = $request->query->get('id', 0);
@@ -72,7 +72,7 @@
 					'datetimepicker' => true,
 				))
 				->add('users', 'entity', array(
-					'class'    => 'VivaAuthBundle:User',
+					'class'    => 'VivaitAuthBundle:User',
 					'property' => 'fullname',
 					'multiple' => true,
 					'attr'     => array('size' => 15),
@@ -105,7 +105,7 @@
 		public function deleteAction(Request $request) {
 			################################################  SETTINGS  ################################################
 			$name         = 'tenant';
-			$repo         = 'VivaAuthBundle:Tenant';
+			$repo         = 'VivaitAuthBundle:Tenant';
 			$id           = $request->query->get('id', 0);
 			$msg_notfound = "The $name could not be found";
 			$msg_success  = "The $name has been removed";
