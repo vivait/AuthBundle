@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
-use \Viva\SettingsBundle\Entity\Settings;
+use \Vivait\SettingsBundle\Entity\Settings;
 use \Viva\BravoBundle\Entity\Queue;
 
 
@@ -68,7 +68,7 @@ class Tenant {
 	private $users;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="\Viva\SettingsBundle\Entity\Settings", mappedBy="tenant")
+	 * @ORM\OneToMany(targetEntity="\Vivait\SettingsBundle\Entity\Settings", mappedBy="tenant")
 	 */
 	private $settings;
 
