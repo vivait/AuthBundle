@@ -29,7 +29,7 @@ class Group implements RoleInterface, \Serializable
     private $role;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="\Vivait\AuthBundle\Entity\User", mappedBy="groups")
      */
     private $users;
 
@@ -115,7 +115,7 @@ class Group implements RoleInterface, \Serializable
     public function removeUser(User $users)
     {
         $this->users->removeElement($users);
-		$users->removeGroup($this);														#REQUIRED WITH BY_REFERENCE IN CONTROLLER FORM TO UPDATE ON INVERSE SIDE
+			$users->removeGroup($this);														#REQUIRED WITH BY_REFERENCE IN CONTROLLER FORM TO UPDATE ON INVERSE SIDE
     }
 
     /**

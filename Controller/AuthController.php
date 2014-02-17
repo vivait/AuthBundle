@@ -7,8 +7,6 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\FormError;
-use Vivait\AuthBundle\Entity\User;
-
 
 class AuthController extends Controller{
 	

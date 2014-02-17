@@ -5,7 +5,6 @@
 	use Doctrine\ORM\EntityRepository;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vivait\AuthBundle\Entity\User;
 	use Doctrine\ORM\Query;
 
 	class UserController extends Controller {
