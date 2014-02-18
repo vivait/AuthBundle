@@ -14,7 +14,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-		    "vivait/bootstrap-bundle": "1.1.x"
+		"stof/doctrine-extensions-bundle": "1.1.x-dev",
+		"vivait/bootstrap-bundle": "1.1.x"
     },
     "autoload": {
         "psr-0": {
