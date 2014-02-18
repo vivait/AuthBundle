@@ -73,11 +73,6 @@ class Tenant {
 	private $settings;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="\Viva\BravoBundle\Entity\Queue", mappedBy="tenants")
-	 */
-	private $queues;
-
-	/**
 	 * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
 	 */
 	private $deletedAt;
@@ -133,7 +128,6 @@ class Tenant {
 	 */
 	public function __construct() {
 		$this->settings = new ArrayCollection();
-		$this->queues   = new ArrayCollection();
 		$this->users    = new ArrayCollection();
 		$this->priority = 100;
 		$this->active   = 1;
@@ -197,36 +191,6 @@ class Tenant {
 	 */
 	public function getSettings() {
 		return $this->settings;
-	}
-
-	/**
-	 * Add queues
-	 *
-	 * @param Queue $queues
-	 * @return Tenant
-	 */
-	public function addQueue(Queue $queues) {
-		$this->queues[] = $queues;
-
-		return $this;
-	}
-
-	/**
-	 * Remove queues
-	 *
-	 * @param Queue $queues
-	 */
-	public function removeQueue(Queue $queues) {
-		$this->queues->removeElement($queues);
-	}
-
-	/**
-	 * Get queues
-	 *
-	 * @return ArrayCollection|Queue[]
-	 */
-	public function getQueues() {
-		return $this->queues;
 	}
 
 	public function getDeletedAt()
