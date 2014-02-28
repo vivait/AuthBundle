@@ -7,9 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
-use \Vivait\SettingsBundle\Entity\Settings;
-use \Viva\BravoBundle\Entity\Queue;
-
 
 /**
  * Tenant
@@ -212,14 +209,14 @@ class Tenant {
     public function setPriority($priority)
     {
         $this->priority = $priority;
-    
+
         return $this;
     }
 
     /**
      * Get priority
      *
-     * @return integer 
+     * @return integer
      */
     public function getPriority()
     {
@@ -235,14 +232,14 @@ class Tenant {
     public function setActive($active)
     {
         $this->active = $active;
-    
+
         return $this;
     }
 
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -258,14 +255,14 @@ class Tenant {
     public function setLicenseduntil($licenseduntil)
     {
         $this->licenseduntil = $licenseduntil;
-    
+
         return $this;
     }
 
     /**
      * Get licenseduntil
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getLicenseduntil()
     {
