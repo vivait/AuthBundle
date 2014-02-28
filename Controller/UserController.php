@@ -169,7 +169,7 @@
 		public function impersonateAction(Request $request) {
 			################################################  SETTINGS  ################################################
 			$repo = 'VivaitAuthBundle:User';
-			$twig = 'VivaitAuthBundle:Default:impersonateuser.html.twig';
+			$twig = 'VivaitAuthBundle:Partials:impersonateuser.html.twig';
 			############################################################################################################
 			$db = $this->getDoctrine()
 			           ->getRepository($repo)

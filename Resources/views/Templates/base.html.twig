@@ -1,14 +1,12 @@
-{% extends viva_app_twig_base %}
+{% extends 'VivaitBootstrapBundle:Default:base.html.twig' %}
 {% from 'VivaitBootstrapBundle:Default:flash.html.twig' import session_flash %}
 
 
 {% block navbar %}
-	{% include 'VivaitAuthBundle:Default:menu.html.twig' %}
+	{% include 'VivaitAuthBundle:Partials:menu.html.twig' %}
 {% endblock navbar %}
 
-
 {% block title %}Authentication{% endblock %}
-
 
 {% block head_bottom %}
 	{#<style>#}
