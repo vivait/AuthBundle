@@ -21,24 +21,24 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('vivait_auth', 'array');
 
         $rootNode
-          ->fixXmlConfig('template')
+          ->fixXmlConfig('templates')
           ->arrayNode('templates')
             ->addDefaultsIfNotSet()
               ->children()
-                ->scalarNode('base')->defaultValue('VivaitAuthBundle:Core:user_block.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('changepassword')->defaultValue('SonataAdminBundle::standard_layout.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('changetenants')->defaultValue('SonataAdminBundle::ajax_layout.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('groups')->defaultValue('SonataAdminBundle:Core:dashboard.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('heartbeat')->defaultValue('SonataAdminBundle:Core:search.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('impersonateuser')->defaultValue('SonataAdminBundle:CRUD:list.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('login')->defaultValue('SonataAdminBundle:CRUD:show.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('menu')->defaultValue('SonataAdminBundle:CRUD:edit.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('statusbadge')->defaultValue('SonataAdminBundle:CRUD:preview.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('tenants')->defaultValue('SonataAdminBundle:CRUD:history.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('usermenu')->defaultValue('SonataAdminBundle:CRUD:acl.html.twig')->cannotBeEmpty()->end()
-                ->scalarNode('users')->defaultValue('SonataAdminBundle:CRUD:history_revision_timestamp.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('base')->defaultValue('VivaitAuthBundle:Templates:base.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('changepassword')->defaultValue('VivaitAuthBundle:Form:changepassword.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('changetenants')->defaultValue('VivaitAuthBundle:Form:changetenants.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('groups')->defaultValue('VivaitAuthBundle:Default:groups.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('heartbeat')->defaultValue('VivaitAuthBundle:Partials:heartbeat.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('impersonateuser')->defaultValue('VivaitAuthBundle:Form:impersonateuser.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('login')->defaultValue('VivaitAuthBundle:Default:login.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('menu')->defaultValue('VivaitAuthBundle:Partials:menu.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('statusbadge')->defaultValue('VivaitAuthBundle:Partials:statusbadge.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('tenants')->defaultValue('VivaitAuthBundle:Default:tenants.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('usermenu')->defaultValue('VivaitAuthBundle:Partials:usermenu.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('users')->defaultValue('VivaitAuthBundle:Default:users.html.twig')->cannotBeEmpty()->end()
               ->end()
-            ->end()
+            ->end();
 
 
         // Here you should define the parameters that are allowed to
