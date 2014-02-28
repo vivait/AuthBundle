@@ -18,7 +18,28 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('vivait_auth');
+        $rootNode = $treeBuilder->root('vivait_auth', 'array');
+
+        $rootNode
+          ->fixXmlConfig('template')
+          ->arrayNode('templates')
+            ->addDefaultsIfNotSet()
+              ->children()
+                ->scalarNode('base')->defaultValue('VivaitAuthBundle:Core:user_block.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('changepassword')->defaultValue('SonataAdminBundle::standard_layout.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('changetenants')->defaultValue('SonataAdminBundle::ajax_layout.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('groups')->defaultValue('SonataAdminBundle:Core:dashboard.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('heartbeat')->defaultValue('SonataAdminBundle:Core:search.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('impersonateuser')->defaultValue('SonataAdminBundle:CRUD:list.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('login')->defaultValue('SonataAdminBundle:CRUD:show.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('menu')->defaultValue('SonataAdminBundle:CRUD:edit.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('statusbadge')->defaultValue('SonataAdminBundle:CRUD:preview.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('tenants')->defaultValue('SonataAdminBundle:CRUD:history.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('usermenu')->defaultValue('SonataAdminBundle:CRUD:acl.html.twig')->cannotBeEmpty()->end()
+                ->scalarNode('users')->defaultValue('SonataAdminBundle:CRUD:history_revision_timestamp.html.twig')->cannotBeEmpty()->end()
+              ->end()
+            ->end()
+
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
