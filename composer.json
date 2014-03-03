@@ -15,7 +15,8 @@
     "minimum-stability": "stable",
     "require": {
 		"stof/doctrine-extensions-bundle": "1.1.x-dev",
-		"vivait/bootstrap-bundle": "1.1.x"
+		"vivait/bootstrap-bundle": "1.1.x",
+		"codeconsortium/ccdn-user-security-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {
