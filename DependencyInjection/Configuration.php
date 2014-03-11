@@ -17,11 +17,14 @@ class Configuration implements ConfigurationInterface
 	*/
 	public function getConfigTreeBuilder() {
 		$treeBuilder = new TreeBuilder();
-		$treeBuilder->root('vivait_auth');
+		$rootNode = $treeBuilder->root('vivait_auth');
 
-		// Here you should define the parameters that are allowed to
-		// configure your bundle. See the documentation linked above for
-		// more information on that topic.
+		$rootNode
+			->children()
+				->integerNode('license_warning')
+					->defaultValue('7')
+				->end()
+			->end();
 
 		return $treeBuilder;
 	}

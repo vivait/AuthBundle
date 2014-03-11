@@ -23,3 +23,9 @@ services:
         factory_method: getRepository
         arguments:
             - VivaitAuthBundle:Tenant
+
+    vivait.settings.configure_menu_listener:
+        class: Vivait\AuthBundle\EventListener\ConfigureMenuListener
+        arguments: ['@security.context', '%vivait.auth.license_warning%']
+        tags:
+            - { name: kernel.event_listener, event: vivait.bootstrap.menu_configure, priority: -1, method: onMenuConfigure }
