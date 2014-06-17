@@ -50,3 +50,11 @@ mopa_bootstrap:
     menu:
         enabled: true
 ```
+
+Add the following to your config.yml to enable Viva Bootstrap integration:
+```
+twig:
+    form:
+        resources:
+            - 'VivaBravoBundle:Form:fields.html.twig'
+```
