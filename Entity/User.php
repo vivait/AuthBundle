@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vivait\Common\Model\Footprint\UserInterface as FootprintUserInterface;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -15,10 +17,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="Users")
  * @ORM\Entity(repositoryClass="Vivait\AuthBundle\Entity\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
+class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, FootprintUserInterface {
 	const STATUS_UNKNOWN = 0;
 	const STATUS_ONLINE  = 10;
 	const STATUS_AWAY    = 11;
+	const DEFAULT_GRAVATAR = 'wavatar';
 
 	public static function getAllStatus() {
 		$a = array(
@@ -43,7 +46,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 			'initials' => $this->initials,
 			'fullname' => $this->fullname,
 			'username' => $this->username,
-			//			'gravatar' => $this->getGravatar(),
+			'gravatar' => $this->getGravatar(),
 		);
 	}
 
@@ -55,6 +58,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @ORM\Column(name="id", type="guid")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="UUID")
+	 * @Serializer\Groups({"basic"})
 	 */
 	private $id;
 
@@ -63,6 +67,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @Assert\Type(type="string")
 	 * @Assert\NotBlank()
 	 * @Assert\Length(min = "3", max="25");
+     * @Serializer\Groups({"basic"})
 	 */
 	private $username;
 
@@ -82,6 +87,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @Assert\NotBlank()
 	 * @Assert\Email
 	 * @Assert\Length(min = "3", max="60");
+     * @Serializer\Groups({"basic"})
 	 */
 	private $email;
 
@@ -90,6 +96,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @Assert\NotBlank()
 	 * @Assert\Length(min = "3", max="60");
 	 * @Assert\Type(type="string")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $fullname;
 
@@ -98,6 +105,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @Assert\NotBlank()
 	 * @Assert\Length(min = "2", max="10");
 	 * @Assert\Type(type="string")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $initials;
 
@@ -105,6 +113,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @ORM\Column(type="string", length=60, nullable=true)
 	 * @Assert\Length(max="60");
 	 * @Assert\Type(type="string")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $jobtitle;
 
@@ -112,6 +121,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @ORM\Column(type="string", length=60, nullable=true)
 	 * @Assert\Length(max="60");
 	 * @Assert\Type(type="string")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $department;
 
@@ -119,28 +129,34 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 * @ORM\Column(type="string", length=60, nullable=true)
 	 * @Assert\Length(max="60");
 	 * @Assert\Type(type="string")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $location;
 
 	/**
 	 * @ORM\Column(type="string", length=15, nullable=true)
 	 * @Assert\Regex("^\+?[0-9]{11,15}*$")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $telephone;
 
 	/**
-	 * @var Group[]
-	 * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+	 * @var Group[]|ArrayCollection
+	 * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\Group", inversedBy="users")
 	 */
 	private $groups;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Tenant", inversedBy="users")
+	 * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\Tenant", inversedBy="users")
 	 * @ORM\OrderBy({"priority" = "ASC", "tenant" = "ASC"})
 	 */
 	private $tenants;
 
-	/* @var $current_tenant Tenant */
+	/**
+	 * @var Tenant
+	 * @ORM\ManyToOne(targetEntity="Viva\AuthBundle\Entity\Tenant")
+	 * @ORM\JoinColumn(name="current_tenant", referencedColumnName="id")
+	 **/
 	private $current_tenant;
 
 	/**
@@ -166,26 +182,30 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	 */
 	private $lastip;
 
-	/**
-	 * @var integer
-	 * @ORM\Column(name="status", type="integer", nullable=true)
-	 */
-	private $status;
+		/**
+		 * @var string
+		 * @ORM\Column(name="lasturl", type="string", length=255, nullable=true)
+		 */
+		private $lasturl;
+
+		/**
+		 * @var string
+		 * @ORM\Column(name="lastua", type="string", length=255, nullable=true)
+		 */
+		private $lastua;
+
+		/**
+		 * @var integer
+		 * @ORM\Column(name="status", type="integer", nullable=true)
+		 */
+		private $status;
 
 	/**
 	 * @ORM\Column(type="string", length=10, nullable=true)
 	 */
 	private $tfkey;
 
-//	private $gravatarhash;
-
-	/**
-	 * Show the application status instead of Queue 4 on the home page
-	 * @var boolean
-	 * @ORM\Column(name="appstatus", type="boolean", nullable=true)
-	 */
-	private $appstatus;
-
+		private $gravatarhash;
 
 	/**
 	 * This is called once Doctrine has loaded the entity
@@ -280,8 +300,13 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 			$roles[] = $role->getRole();
 		}
 
-		return $roles;
-	}
+			if($this->getCurrentTenant()) {
+				foreach($this->getCurrentTenant()->getGroups() as $role) {
+					$roles[] = $role->getRole();
+				}
+			}
+			return $roles;
+		}
 
 	/**
 	 * @inheritDoc
@@ -714,22 +739,48 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 		return $this->tfkey;
 	}
 
-	/**
-	 * Set appstatus
-	 * @param boolean $appstatus
-	 * @return User
-	 */
-	public function setAppstatus($appstatus) {
-		$this->appstatus = $appstatus;
+		public function getGravatarHash() {
+			if (!$this->gravatarhash) {
+				$this->gravatarhash = md5(strtolower(trim($this->email)));
+			}
 
-		return $this;
-	}
+			return $this->gravatarhash;
+		}
 
-	/**
-	 * Get appstatus
-	 * @return boolean
-	 */
-	public function getAppstatus() {
-		return $this->appstatus;
-	}
+		public function getGravatar() {
+			return sprintf('//www.gravatar.com/avatar/%s?d=%s',$this->getGravatarHash(), self::DEFAULT_GRAVATAR);
+		}
+		/**
+		 * Get Lastua
+		 * @return string
+		 */
+		public function getLastua() {
+			return $this->lastua;
+		}
+		/**
+		 * Set Lastua
+		 * @param string $lastua
+		 * @return $this
+		 */
+		public function setLastua($lastua) {
+			$this->lastua = $lastua;
+			return $this;
+		}
+		/**
+		 * Get Lasturl
+		 * @return string
+		 */
+		public function getLasturl() {
+			return $this->lasturl;
+		}
+		/**
+		 * Set Lasturl
+		 * @param string $lasturl
+		 * @return $this
+		 */
+		public function setLasturl($lasturl) {
+			$this->lasturl = $lasturl;
+			return $this;
+		}
+
 }

@@ -143,11 +143,4 @@ trait UserTrait {
 	private $tfkey;
 
 //	private $gravatarhash;
-
-	/**
-	 * Show the application status instead of Queue 4 on the home page
-	 * @var boolean
-	 * @ORM\Column(name="appstatus", type="boolean", nullable=true)
-	 */
-	private $appstatus;
 }

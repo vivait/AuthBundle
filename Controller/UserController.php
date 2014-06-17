@@ -76,7 +76,6 @@
 			             ->add('username', 'text', array('label' => 'Username'))
 			             ->add('initials', 'text', array('label' => 'Initials'))
 			             ->add('fullname', 'text', array('label' => 'Full Name'))
-			             ->add('appstatus', 'checkbox', array('label' => 'Show App Status instead of Queue 4?'))
 			             ->add('email', 'email', array('label' => 'Email Address'))
 			             ->add('password', 'password', array('label' => 'New Password'))
 			             ->add('active', 'checkbox', array('label' => 'Active'))
