@@ -37,13 +37,9 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
 	public function findAllFull() {
 		return $this
 			->createQueryBuilder('u')
-			->select('u, g, t, q1, q2, q3, q4')
+			->select('u, g, t')
 			->leftJoin('u.groups', 'g')
 			->leftJoin('u.tenants', 't')
-			->leftJoin('u.queues1', 'q1')
-			->leftJoin('u.queues2', 'q2')
-			->leftJoin('u.queues3', 'q3')
-			->leftJoin('u.queues4', 'q4')
 			->getQuery();
 	}
 
