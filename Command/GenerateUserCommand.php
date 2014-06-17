@@ -26,12 +26,12 @@
 
 		protected function execute(InputInterface $input, OutputInterface $output) {
 			$fullname   = ucwords($input->getArgument('fullname'));
-			$username   = $input->getArgument('username');
 			$password   = $input->getArgument('password');
 			$email      = $input->getArgument('email');
 			$role       = $input->getArgument('role');
 			$tenantcode = $input->getArgument('tenant');
-
+            $username   = $input->getArgument('username');
+            $initials   = "";
 
             $names = explode(' ', $fullname);
 
@@ -40,6 +40,12 @@
                 $username = implode('', $names);
             }
 
+            #create initials if not specified
+            if(!$initials){
+                foreach($names as $name){
+                    $initials .= $name[0];
+                }
+            }
 
 
 			#find user from username
@@ -91,7 +97,7 @@
 			$user->setUsername($username);
 			$user->setActive(true);
 			$user->setEmail($email);
-			$user->setFullname($username);
+			$user->setInitials($initials);
 			$user->addGroup($group);
 
 			if($tenant) {
@@ -109,7 +115,7 @@
 			$em->persist($user);
 			$em->flush();
 
-			$output->writeln(sprintf("Success: User added successfully\n         Username: %s",$user->getFullname()));
+			$output->writeln(sprintf("Success: User added successfully\n         Username: %s",$user->getUsername()));
 
 			if($group) {
 				$output->writeln(sprintf("            Group: %s", $group->getName()));
