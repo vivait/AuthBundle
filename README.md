@@ -29,3 +29,6 @@ vivait_auth:
     resource: "@VivaitAuthBundle/Resources/config/routing.yml"
     prefix:   /
 ```
+
+###Add the security rules
+Replace the contents of ```app\config\security.yml``` with the contents of ```Resources\config\security.yml```:
