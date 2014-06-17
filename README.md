@@ -40,3 +40,13 @@ In your new ```security.yml```, change the following config option to be the rou
             form_login:
                 default_target_path: viva_app_homepage
 ```
+
+###Add the config rules
+Add the following to your config.yml to enable Mopa Bootstrap integration:
+```yaml
+mopa_bootstrap:
+    form:
+        show_legend: false
+    menu:
+        enabled: true
+```
