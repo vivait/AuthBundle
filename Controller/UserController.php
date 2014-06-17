@@ -6,8 +6,9 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Doctrine\ORM\Query;
+    use Vivait\AuthBundle\Entity\User;
 
-	class UserController extends Controller {
+    class UserController extends Controller {
 
 		public function indexAction() {
 			################################################  SETTINGS  ################################################
