@@ -154,7 +154,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 
 	/**
 	 * @var Tenant
-	 * @ORM\ManyToOne(targetEntity="Viva\AuthBundle\Entity\Tenant")
+	 * @ORM\ManyToOne(targetEntity="Vivait\AuthBundle\Entity\Tenant")
 	 * @ORM\JoinColumn(name="current_tenant", referencedColumnName="id")
 	 **/
 	private $current_tenant;
