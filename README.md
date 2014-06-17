@@ -31,4 +31,4 @@ vivait_auth:
 ```
 
 ###Add the security rules
-Replace the contents of ```app\config\security.yml``` with the contents of ```AuthBundle\Resources\config\security.yml```:
+Replace the contents of ```app\config\security.yml``` with the contents of [security.yml](Resources/config/security.yml):
