@@ -65,11 +65,6 @@ class Tenant {
 	private $users;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="\Vivait\SettingsBundle\Entity\Settings", mappedBy="tenant")
-	 */
-	private $settings;
-
-	/**
 	 * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
 	 */
 	private $deletedAt;
@@ -124,7 +119,6 @@ class Tenant {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->settings = new ArrayCollection();
 		$this->users    = new ArrayCollection();
 		$this->priority = 100;
 		$this->active   = 1;
@@ -157,37 +151,6 @@ class Tenant {
 	 */
 	public function getUsers() {
 		return $this->users;
-	}
-
-	/**
-	 * Add settings
-	 *
-	 * @param Settings $settings
-	 * @return Tenant
-	 */
-	public function addSetting(Settings $settings) {
-		$this->settings[] = $settings;
-		$settings->setTenant($this);
-
-		return $this;
-	}
-
-	/**
-	 * Remove settings
-	 *
-	 * @param Settings $settings
-	 */
-	public function removeSetting(Settings $settings) {
-		$this->settings->removeElement($settings);
-	}
-
-	/**
-	 * Get settings
-	 *
-	 * @return ArrayCollection|Settings[]
-	 */
-	public function getSettings() {
-		return $this->settings;
 	}
 
 	public function getDeletedAt()
