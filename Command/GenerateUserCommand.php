@@ -19,7 +19,7 @@
 				->addArgument('password', InputArgument::REQUIRED, 'Enter the username of the user?')
 				->addArgument('email', InputArgument::REQUIRED, 'Enter the email address of the user?')
 				->addArgument('role', InputArgument::REQUIRED, 'Enter the role of the user?')
-				->addArgument('tenant', InputArgument::OPTIONAL, 'Enter the code of the tenant');
+				->addArgument('tenant', InputArgument::REQUIRED, 'Enter the code of the tenant');
 		}
 
 

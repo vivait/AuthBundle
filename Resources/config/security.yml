@@ -9,13 +9,19 @@ security:
         Vivait\AuthBundle\Entity\User:
             algorithm:        sha512
 
+        Vivait\AuthBundle\Command\GenerateUserCommand:
+            algorithm:        sha512
+
+        Vivait\AuthBundle\Command\UserChangePasswordCommand:
+            algorithm:        sha512
+           
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         viva:
-            entity: { class: Vivait\AuthBundle\Entity\User, property: username }
+            entity: { class: Vivait\AuthBundle\Entity\User }
 
     firewalls:
         secured_area:
