@@ -197,16 +197,8 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable {
 	public function __construct() {
 		$this->salt         = md5(uniqid(null, true));
 		$this->active       = true;
-		$this->deals        = new ArrayCollection();
 		$this->groups       = new ArrayCollection();
-		$this->history      = new ArrayCollection();
-		$this->action       = new ArrayCollection();
 		$this->tenants      = new ArrayCollection();
-		$this->sendtoqueues = new ArrayCollection();
-		$this->queues1      = new ArrayCollection();
-		$this->queues2      = new ArrayCollection();
-		$this->queues3      = new ArrayCollection();
-		$this->queues4      = new ArrayCollection();
 	}
 
 	public function isAccountNonExpired() {
