@@ -16,8 +16,10 @@
     "require": {
 		"stof/doctrine-extensions-bundle": "~1.1",
 		"vivait/bootstrap-bundle": "~1.1",
-		"codeconsortium/ccdn-user-security-bundle": "~2.0.3"
-    },
+		"codeconsortium/ccdn-user-security-bundle": "~2.0.3",
+		"vivait/common": "*",
+		"jms/serializer": "dev-master"
+	},
     "autoload": {
         "psr-0": {
             "Vivait\\AuthBundle": ""
