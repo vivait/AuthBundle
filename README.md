@@ -40,31 +40,3 @@ In your new ```security.yml```, change the following config option to be the rou
             form_login:
                 default_target_path: viva_app_homepage
 ```
-
-###Add the config rules
-Add the following to your config.yml to enable Mopa Bootstrap integration:
-```yaml
-mopa_bootstrap:
-    form:
-        show_legend: false
-```
-
-Add the following to your config.yml to enable Viva Bootstrap integration:
-```yaml
-twig:
-    form:
-        resources:
-            - 'VivaitBootstrapBundle:Form:fields.html.twig'
-```
-
-You may already have a twig configuration in your config,yml, if this is the case then you should combine the two, e.g.
-
-```yaml
-twig:
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
-    form:
-        resources:
-            - 'VivaitBootstrapBundle:Form:fields.html.twig'
-```
-
