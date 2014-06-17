@@ -15,20 +15,32 @@
 			$this
 				->setName('auth:user:add')
 				->setDescription('Create a single user into the database')
-				->addArgument('username', InputArgument::REQUIRED, 'Enter the username of the user?')
+				->addArgument('fullname', InputArgument::REQUIRED, 'Enter the name of the user?')
 				->addArgument('password', InputArgument::REQUIRED, 'Enter the username of the user?')
 				->addArgument('email', InputArgument::REQUIRED, 'Enter the email address of the user?')
 				->addArgument('role', InputArgument::REQUIRED, 'Enter the role of the user?')
-				->addArgument('tenant', InputArgument::REQUIRED, 'Enter the code of the tenant');
+				->addArgument('tenant', InputArgument::REQUIRED, 'Enter the code of the tenant')
+                ->addArgument('username', InputArgument::OPTIONAL, 'Enter the username of the user?');
 		}
 
 
 		protected function execute(InputInterface $input, OutputInterface $output) {
+			$fullname   = ucwords($input->getArgument('fullname'));
 			$username   = $input->getArgument('username');
 			$password   = $input->getArgument('password');
 			$email      = $input->getArgument('email');
 			$role       = $input->getArgument('role');
 			$tenantcode = $input->getArgument('tenant');
+
+
+            $names = explode(' ', $fullname);
+
+            #create a user name if not specified
+            if(!$username){
+                $username = implode('', $names);
+            }
+
+
 
 			#find user from username
 			$user = $this->getContainer()->get('doctrine')
@@ -75,6 +87,7 @@
 
 
 			$user = new User();
+            $user->setFullname($fullname);
 			$user->setUsername($username);
 			$user->setActive(true);
 			$user->setEmail($email);
