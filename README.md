@@ -31,4 +31,12 @@ vivait_auth:
 ```
 
 ###Add the security rules
-Replace the contents of ```app\config\security.yml``` with the contents of [security.yml](Resources/config/security.yml):
+Replace the contents of your ```app/config/security.yml``` with the contents of [security.yml](Resources/config/security.yml).
+
+In your new ```security.yml```, change the following config option to be the route of your application homepage:
+```yaml
+    firewalls:
+        secured_area:
+            form_login:
+                default_target_path: viva_app_homepage
+```
