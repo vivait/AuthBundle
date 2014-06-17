@@ -21,7 +21,7 @@ security:
 
     providers:
         viva:
-            entity: { class: Vivait\AuthBundle\Entity\User, property: username }
+            entity: { class: Vivait\AuthBundle\Entity\User }
 
     firewalls:
         secured_area:
