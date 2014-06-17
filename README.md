@@ -52,9 +52,21 @@ mopa_bootstrap:
 ```
 
 Add the following to your config.yml to enable Viva Bootstrap integration:
-```
+```yaml
 twig:
     form:
         resources:
-            - 'VivaBravoBundle:Form:fields.html.twig'
+            - 'VivaitBootstrapBundle:Form:fields.html.twig'
 ```
+
+You may already have a twig configuration in your config,yml, if this is the case then you should combine the two, e.g.
+
+```yaml
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'VivaitBootstrapBundle:Form:fields.html.twig'
+```
+
