@@ -1,0 +1,10 @@
+Vivait\AuthBundle\Entity\Group:
+  Administrator:
+    name: Administrator
+    role: ROLE_ADMIN
+  Manager:
+    name: Manager
+    role: ROLE_MANAGER
+  User:
+    name: User
+    role: ROLE_USER
