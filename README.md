@@ -1,4 +1,4 @@
-Viva IT - Settings Bundle
+Viva IT - Authentication Bundle
 ============
 
 Installation
