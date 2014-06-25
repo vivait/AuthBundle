@@ -28,8 +28,8 @@ class ConfigureMenuListener {
 		$menu  = $event->getMenu();
 		$token = $this->security_context->getToken();
 
-		$root = $menu->addChild('Test', [
-			'navbar' => true
+		$root = $menu->addChild('Auth Menu', [
+			'navbar' => true,
 		]);
 
 		if ($token === null) {
