@@ -790,9 +790,6 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 		$encoder  = $encoder_factory->getEncoder( $this );
 		$password = $encoder->encodePassword( $this->getPassword(), $this->getSalt() );
 
-		var_dump( $this->getPassword() );
-		var_dump( $this->getSalt() );
-		var_dump( $password );
 		$this->setPassword( $password );
 	}
 }
