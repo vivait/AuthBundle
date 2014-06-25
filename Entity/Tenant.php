@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Tenant
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Vivait\AuthBundle\Entity\TenantRepository")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @UniqueEntity("code")
  */
@@ -79,10 +79,12 @@ class Tenant {
 
 	/**
 	 * Set tenant
+	 *
 	 * @param string $tenant
+	 *
 	 * @return Tenant
 	 */
-	public function setTenant($tenant) {
+	public function setTenant( $tenant ) {
 		$this->tenant = $tenant;
 
 		return $this;
@@ -98,11 +100,13 @@ class Tenant {
 
 	/**
 	 * Set code
+	 *
 	 * @param string $code
+	 *
 	 * @return Tenant
 	 */
-	public function setCode($code) {
-		$this->code = strtoupper($code);
+	public function setCode( $code ) {
+		$this->code = strtoupper( $code );
 
 		return $this;
 	}
@@ -118,31 +122,37 @@ class Tenant {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
-		$this->users    = new ArrayCollection();
-		$this->priority = 100;
-		$this->active   = 1;
+	public function __construct( $code = null, $tenant = null, $licensed_until = null ) {
+		$this->users          = new ArrayCollection();
+		$this->priority       = 100;
+		$this->active         = 1;
+		$this->code           = $code;
+		$this->tenant         = $tenant;
+		$this->licenseduntil  = $licensed_until ?: new \DateTime('+1 month');
 	}
 
 	/**
 	 * Add users
+	 *
 	 * @param User $users
+	 *
 	 * @return Tenant
 	 */
-	public function addUser(User $users) {
+	public function addUser( User $users ) {
 		$this->users[] = $users;
-		$users->addTenant($this);
+		$users->addTenant( $this );
 
 		return $this;
 	}
 
 	/**
 	 * Remove users
+	 *
 	 * @param User $users
 	 */
-	public function removeUser(User $users) {
-		$this->users->removeElement($users);
-		$users->removeTenant($this);
+	public function removeUser( User $users ) {
+		$this->users->removeElement( $users );
+		$users->removeTenant( $this );
 	}
 
 	/**
@@ -153,82 +163,77 @@ class Tenant {
 		return $this->users;
 	}
 
-	public function getDeletedAt()
-	{
+	public function getDeletedAt() {
 		return $this->deletedAt;
 	}
 
-	public function setDeletedAt($deletedAt)
-	{
+	public function setDeletedAt( $deletedAt ) {
 		$this->deletedAt = $deletedAt;
 	}
 
-    /**
-     * Set priority
-     *
-     * @param integer $priority
-     * @return Tenant
-     */
-    public function setPriority($priority)
-    {
-        $this->priority = $priority;
+	/**
+	 * Set priority
+	 *
+	 * @param integer $priority
+	 *
+	 * @return Tenant
+	 */
+	public function setPriority( $priority ) {
+		$this->priority = $priority;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get priority
-     *
-     * @return integer
-     */
-    public function getPriority()
-    {
-        return $this->priority;
-    }
+	/**
+	 * Get priority
+	 *
+	 * @return integer
+	 */
+	public function getPriority() {
+		return $this->priority;
+	}
 
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Tenant
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
+	/**
+	 * Set active
+	 *
+	 * @param boolean $active
+	 *
+	 * @return Tenant
+	 */
+	public function setActive( $active ) {
+		$this->active = $active;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get active
-     *
-     * @return boolean
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
+	/**
+	 * Get active
+	 *
+	 * @return boolean
+	 */
+	public function getActive() {
+		return $this->active;
+	}
 
-    /**
-     * Set licenseduntil
-     *
-     * @param \DateTime $licenseduntil
-     * @return Tenant
-     */
-    public function setLicenseduntil($licenseduntil)
-    {
-        $this->licenseduntil = $licenseduntil;
+	/**
+	 * Set licenseduntil
+	 *
+	 * @param \DateTime $licenseduntil
+	 *
+	 * @return Tenant
+	 */
+	public function setLicenseduntil( $licenseduntil ) {
+		$this->licenseduntil = $licenseduntil;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get licenseduntil
-     *
-     * @return \DateTime
-     */
-    public function getLicenseduntil()
-    {
-        return $this->licenseduntil;
-    }
+	/**
+	 * Get licenseduntil
+	 *
+	 * @return \DateTime
+	 */
+	public function getLicenseduntil() {
+		return $this->licenseduntil;
+	}
 }

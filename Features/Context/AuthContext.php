@@ -3,11 +3,15 @@
 namespace Vivait\AuthBundle\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
+use Behat\Gherkin\Node\TableNode;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
+use Vivait\AuthBundle\Entity\Tenant;
+use Vivait\AuthBundle\Entity\User;
 use Vivait\AuthBundle\Entity\UserRepository;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use Behat\Behat\Context\Step;
+use Vivait\BehatAliceLoader\AliceContext;
 
 class AuthContext extends BehatContext {
 	use KernelDictionary;
@@ -54,12 +58,15 @@ class AuthContext extends BehatContext {
 		return $em;
 	}
 
+	/**
+	 * @param $username
+	 */
 	protected function getUserPassword($username) {
-		if (isset($this->users[$username])) {
-			return $this->users[ $username ];
+		if (!isset($this->users[$username]['password'])) {
+			throw new \OutOfBoundsException('Invalid user '. $username);
 		}
 
-		throw new \OutOfBoundsException('Invalid user '. $username);
+		return $this->users[ $username ]['password'];
 	}
 
 	/**
@@ -86,6 +93,37 @@ class AuthContext extends BehatContext {
 			new Step\When('I press "Sign in"'),
 			new Step\Then('I should not see "Login Failed"'),
 		);
+	}
+
+	/**
+	 * @Given /^there are the following users:$/
+	 */
+	public function thereAreTheFollowingUsers(TableNode $table) {
+		foreach ($table->getHash() as $row) {
+			$this->users[$row['username']] = $row;
+		}
+
+		/* @var $alice AliceContext */
+		$alice = $this->getMainContext()->getSubcontextByClassName('Vivait\BehatAliceLoader\AliceContext');
+
+		if ($alice) {
+			/* @var $users User[] */
+			$users = $alice->thereAreTheFollowing('VivaitAuthBundle:User', $table);
+
+			foreach ($users as $user) {
+				$user->hashPassword($this->getContainer()->get('security.encoder_factory'));
+
+				if (!$user->getTenants()->count()) {
+					$tenant = $this->getManager()->getRepository('VivaitAuthBundle:Tenant')->findDefaultTenant();
+					$tenant->addUser( $user );
+					$this->getManager()->persist( $tenant );
+				}
+
+				$this->getManager()->persist( $user );
+			}
+
+			$this->getManager()->flush();
+		}
 	}
 
 	/**

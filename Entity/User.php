@@ -2,6 +2,7 @@
 
 namespace Vivait\AuthBundle\Entity;
 
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -215,7 +216,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 #############################################
 
 	public function __construct() {
-		$this->salt         = md5(uniqid(null, true));
+		$this->newSalt();
 		$this->active       = true;
 		$this->groups       = new ArrayCollection();
 		$this->tenants      = new ArrayCollection();
@@ -783,4 +784,15 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 			return $this;
 		}
 
+	public function hashPassword(EncoderFactoryInterface $encoder_factory){
+		$this->newSalt();
+		$this->salt = 'test';
+		$encoder  = $encoder_factory->getEncoder( $this );
+		$password = $encoder->encodePassword( $this->getPassword(), $this->getSalt() );
+
+		var_dump( $this->getPassword() );
+		var_dump( $this->getSalt() );
+		var_dump( $password );
+		$this->setPassword( $password );
+	}
 }

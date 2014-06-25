@@ -2,7 +2,7 @@ Feature: Login
   The user must be able to log into the system
 
   Background:
-    Given there are the following "\Vivait\AuthBundle\Entity\User":
+    Given there are the following users:
       | username  | fullname    | email                  | password | active | group            | tenant |
       | TestUser1 | Test user   | testuser1@vivait.co.uk | password | yes    | [@Administrator] | [@TE1] |
       | TestUser2 | Test user 2 | testuser2@vivait.co.uk | password | yes    | [@User]          | [@TE1] |
