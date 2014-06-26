@@ -786,7 +786,6 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 
 	public function hashPassword(EncoderFactoryInterface $encoder_factory){
 		$this->newSalt();
-		$this->salt = 'test';
 		$encoder  = $encoder_factory->getEncoder( $this );
 		$password = $encoder->encodePassword( $this->getPassword(), $this->getSalt() );
 
