@@ -12,7 +12,8 @@
             "email": "lewis@vivait.co.uk"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
 		"stof/doctrine-extensions-bundle": "~1.1",
 		"vivait/bootstrap-bundle": "~1.1",
