@@ -285,8 +285,7 @@ class Tenant {
 			return [
 				'id'       => $this->id,
 				'code'     => $this->code,
-				'tenant'   => $this->tenant,
-				'location' => $this->location
+				'tenant'   => $this->tenant
 			];
 		}
 
