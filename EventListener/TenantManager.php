@@ -10,17 +10,32 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Vivait\AuthBundle\Entity\Tenant;
+use Vivait\AuthBundle\Entity\TenantRepository;
 use Vivait\AuthBundle\Entity\User;
 
 class TenantManager implements EventSubscriberInterface
 {
 	const SESSION_VAR = 'vivait_auth_tenant';
 
-	/* @var $security_context SecurityContext */
+	/**
+	 * @var SecurityContext
+	 */
 	protected $security_context;
 
-	/* @var $tenant Tenant */
+	/**
+	 * @var Tenant
+	 */
 	protected $tenant;
+
+	/**
+	 * @var TenantRepository
+	 */
+	protected $tenant_repository;
+
+	/**
+	 * @var Logger
+	 */
+	protected $logger;
 
 	function __construct(SecurityContext $security_context, Logger $logger, EntityRepository $tenant_repository) {
 		$this->security_context  = $security_context;
@@ -79,11 +94,9 @@ class TenantManager implements EventSubscriberInterface
 	protected function getRequestTenant(Request $request) {
 		$session   = $request->getSession();
 		$tenant_id = $request->get('_tenant');
-		$tenant_changed = true;
 
 		if (!$tenant_id) {
 			$tenant_id = $session->get(self::SESSION_VAR);
-			$tenant_changed = false;
 		}
 
 		if ($tenant_id) {
