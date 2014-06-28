@@ -47,6 +47,7 @@ class User implements AdvancedUserInterface, \Serializable, \JsonSerializable, F
 			'initials' => $this->initials,
 			'fullname' => $this->fullname,
 			'username' => $this->username,
+        'tenant'     => $this->current_tenant ? $this->current_tenant->jsonSerialize() : null,
 			'gravatar' => $this->getGravatar(),
 		);
 	}

@@ -10,6 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Vivait\AuthBundle\Entity\Tenant;
+use Vivait\AuthBundle\Entity\User;
 
 class TenantManager implements EventSubscriberInterface
 {
@@ -107,6 +108,10 @@ class TenantManager implements EventSubscriberInterface
 		$user = $token->getUser();
 
 		if ($user instanceOf User) {
+			if($user->getCurrentTenant()) {
+				return $user->getCurrentTenant();
+			}
+
 			return $user->getTenants()->first();
 		}
 		return null;

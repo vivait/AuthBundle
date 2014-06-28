@@ -40,7 +40,7 @@ class ConfigureMenuListener {
 		$user = $token->getUser();
 
 		if ($user) {
-			if (true || $user->getLicensedUntil() > new \DateTime('+' . $this->license_warning . ' days')) {
+			if ($user->getLicensedUntil() > new \DateTime('+' . $this->license_warning . ' days')) {
 				$licensing = $root->addChild('Licensing Warning', [
 					'dropdown' => true,
 					'icon'     => 'warning-sign',

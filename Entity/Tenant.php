@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Tenant
@@ -21,6 +22,7 @@ class Tenant {
 	 * @ORM\Column(name="id", type="guid")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="UUID")
+     * @Serializer\Groups({"basic"})
 	 */
 	private $id;
 
@@ -29,7 +31,8 @@ class Tenant {
 	 * @ORM\Column(name="tenant", type="string", length=255)
 	 * @Assert\Type(type="string")
 	 * @Assert\NotBlank()
-	 * @Assert\Length(min = "3", max="64");
+	 * @Assert\Length(min = "3", max="255");
+     * @Serializer\Groups({"basic"})
 	 */
 	private $tenant;
 
@@ -45,7 +48,8 @@ class Tenant {
 	 * @ORM\Column(name="code", type="string", length=64, unique=true)
 	 * @Assert\Type(type="string")
 	 * @Assert\NotBlank()
-	 * @Assert\Length(min = "3", max="64");
+		 * @Assert\Length(min = "3", max="64");
+     * @Serializer\Groups({"basic"})
 	 */
 	private $code;
 
@@ -59,15 +63,20 @@ class Tenant {
 	 */
 	private $licenseduntil;
 
-	/**
-	 * @ORM\ManyToMany(targetEntity="User", mappedBy="tenants")
-	 */
-	private $users;
+		/**
+		 * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\User", mappedBy="tenants")
+		 */
+		private $users;
 
 	/**
 	 * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
 	 */
 	private $deletedAt;
+		/**
+		 * @var Group[]|ArrayCollection
+		 * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\Group", inversedBy="tenants")
+		 */
+		private $groups;
 
 	/**
 	 * Get id
@@ -124,6 +133,7 @@ class Tenant {
 	 */
 	public function __construct( $code = null, $tenant = null, $licensed_until = null ) {
 		$this->users          = new ArrayCollection();
+			$this->groups    = new ArrayCollection();
 		$this->priority       = 100;
 		$this->active         = 1;
 		$this->code           = $code;
@@ -236,4 +246,53 @@ class Tenant {
 	public function getLicenseduntil() {
 		return $this->licenseduntil;
 	}
+
+		/**
+		 * Add groups
+		 * @param Group $groups
+		 * @return User
+		 */
+		public function addGroup(Group $groups) {
+			$this->groups[] = $groups;
+
+			return $this;
+		}
+
+		/**
+		 * Remove groups
+		 * @param Group $groups
+		 */
+		public function removeGroup(Group $groups) {
+			$this->groups->removeElement($groups);
+		}
+
+		/**
+		 * Get groups
+		 * @return Group[]|ArrayCollection
+		 */
+		public function getGroups() {
+			return $this->groups;
+		}
+
+		/**
+		 * (PHP 5 &gt;= 5.4.0)<br/>
+		 * Specify data which should be serialized to JSON
+		 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+		 * @return mixed data which can be serialized by <b>json_encode</b>,
+		 * which is a value of any type other than a resource.
+		 */
+		public function jsonSerialize() {
+			return [
+				'id'       => $this->id,
+				'code'     => $this->code,
+				'tenant'   => $this->tenant,
+				'location' => $this->location
+			];
+		}
+
+
+      public function __toString()
+      {
+          return $this->getTenant();
+      }
 }

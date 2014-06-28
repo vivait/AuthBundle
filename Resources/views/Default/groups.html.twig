@@ -12,7 +12,8 @@
 				<tr>
 					<th>Name</th>
 					<th>Code</th>
-					<th>Members</th>
+					<th>Users</th>
+					<th>Tenants</th>
 					<th>Control</th>
 				</tr>
 				</thead>
@@ -24,6 +25,11 @@
 						<td>
 							{% for user in row.users %}
 								<div class="cell-divider">{{ user.fullname }}</div>
+							{% endfor %}
+						</td>
+						<td>
+							{% for tenant in row.tenants %}
+								<div class="cell-divider">{{ tenant.tenant }}</div>
 							{% endfor %}
 						</td>
 						<td class="action">

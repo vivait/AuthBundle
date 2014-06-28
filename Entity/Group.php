@@ -29,14 +29,24 @@ class Group implements RoleInterface, \Serializable
     private $role;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\Vivait\AuthBundle\Entity\User", mappedBy="groups")
+     * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\User", mappedBy="groups")
      */
     private $users;
 
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+		/**
+		 * @ORM\ManyToMany(targetEntity="Vivait\AuthBundle\Entity\Tenant", mappedBy="groups")
+		 */
+		private $tenants;
+
+		/**
+		 * @ORM\Column(name="tenant_group", type="boolean")
+		 */
+		private $tenant_group;
+
+		public function __construct() {
+			$this->users   = new ArrayCollection();
+			$this->tenants = new ArrayCollection();
+		}
 
     // ... getters and setters for each property
 
@@ -149,4 +159,51 @@ class Group implements RoleInterface, \Serializable
             $this->role
             ) = unserialize($serialized);
     }
+    
+    /**
+		 * Set tenant_group
+		 * @param boolean $tenantGroup
+		 * @return Group
+		 */
+		public function setTenantGroup($tenantGroup) {
+			$this->tenant_group = $tenantGroup;
+
+			return $this;
+		}
+
+		/**
+		 * Get tenant_group
+		 * @return boolean
+		 */
+		public function getTenantGroup() {
+			return $this->tenant_group;
+		}
+
+		/**
+		 * Add tenants
+		 * @param Tenant $tenants
+		 * @return Group
+		 */
+		public function addTenant(Tenant $tenants) {
+			$this->tenants[] = $tenants;
+            $tenants->addGroup($this);
+			return $this;
+		}
+
+		/**
+		 * Remove tenants
+		 * @param Tenant $tenants
+		 */
+		public function removeTenant(Tenant $tenants) {
+			$this->tenants->removeElement($tenants);
+			$tenants->removeGroup($this);
+		}
+
+		/**
+		 * Get tenants
+		 * @return Tenant[]|ArrayCollection
+		 */
+		public function getTenants() {
+			return $this->tenants;
+		}
 }
