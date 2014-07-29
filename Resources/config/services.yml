@@ -1,5 +1,6 @@
 parameters:
 #    vivait_auth.example.class: Vivait\AuthBundle\Example
+#    vivait_auth.base.user: Vivait\AuthBundle\Entity\User
 
 services:
 #    vivait_auth.example:
