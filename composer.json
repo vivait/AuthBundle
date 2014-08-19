@@ -17,7 +17,6 @@
     "require": {
 		"stof/doctrine-extensions-bundle": "~1.1",
 		"vivait/bootstrap-bundle": "~1.1",
-		"codeconsortium/ccdn-user-security-bundle": "~2.0.3",
 		"vivait/common": "~2.0",
 		"jms/serializer": "~0.16"
 	},
