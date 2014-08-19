@@ -1,0 +1,18 @@
+default:
+  paths:
+    features: Features
+    bootstrap: %behat.paths.features%/Context
+  context:
+    class: Vivait\AuthBundle\Features\Context\FeatureContext
+  extensions:
+    Behat\Symfony2Extension\Extension:
+      mink_driver: true
+      kernel:
+        env: test
+        debug: true
+        path: Features/Fixtures/AuthBundle/app/AppKernel.php
+        bootstrap: Features/Fixtures/AuthBundle/app/bootstrap.php
+    Behat\MinkExtension\Extension:
+      base_url: 'http://localhost/app_test.php/'
+      default_session: symfony2
+
