@@ -5,7 +5,7 @@ Installation
 ------------
 ###Using composer
 ``` bash
-$ composer require viviat/auth-bundle
+$ composer require vivait/auth-bundle
 ```
 
 ###Enabling bundle
