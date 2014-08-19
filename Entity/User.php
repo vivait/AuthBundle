@@ -19,27 +19,6 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="Vivait\AuthBundle\Entity\UserRepository")
  */
 class User extends BaseUser implements AdvancedUserInterface, \Serializable, \JsonSerializable, FootprintUserInterface {
-	const STATUS_UNKNOWN = 0;
-	const STATUS_ONLINE  = 10;
-	const STATUS_AWAY    = 11;
-	const DEFAULT_GRAVATAR = 'wavatar';
-
-	public static function getAllStatus() {
-		$a = array(
-			self::STATUS_ONLINE => 'Online',
-			self::STATUS_AWAY   => 'Away',
-		);
-		return $a;
-	}
-
-	public function getStatusName() {
-		foreach (self::getAllStatus() as $key => $value) {
-			if ($key == $this->getStatus()) {
-				return $value;
-			}
-		}
-		return 'Unknown';
-	}
 
 	public function jsonSerialize() {
 		return array(
