@@ -15,20 +15,22 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-		"stof/doctrine-extensions-bundle": "~1.1",
-		"vivait/bootstrap-bundle": "~1.1",
-		"vivait/common": "~2.0",
-		"jms/serializer": "~0.16",
-         "symfony/symfony":               "~2.1", 
-         "sensio/framework-extra-bundle": "~2.1" 
-	},
-	"require-dev": {
+    	 "php":                           ">=5.3.3",
+         "stof/doctrine-extensions-bundle": "~1.1",
+         "vivait/bootstrap-bundle": "~1.1",
+         "vivait/common": "~2.0",
+         "jms/serializer": "~0.16",
+        "symfony/symfony":               "~2.1",
+        "sensio/framework-extra-bundle": "~2.1"
+    },
+    "require-dev": {
+        "behat/behat":                   "~2.4",
+        "behat/symfony2-extension":      "~1.0",
+        "behat/mink-extension":          "~1.0",
+        "behat/mink-browserkit-driver":  "~1.0",
+        "symfony/monolog-bundle":        "~2.1",
 		"phpspec/phpspec": "~2",
-		"vivait/behat-alice-loader": "dev-master",
-		"behat/behat": "~2.5",
-		"behat/mink-extension": "~1.3",
-		"behat/symfony2-extension": "~1.1",
-		"behat/mink-goutte-driver": "~1.0"
+		"vivait/behat-alice-loader": "dev-master"
 	},
     "autoload": {
         "psr-0": {
