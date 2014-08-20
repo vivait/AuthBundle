@@ -42,3 +42,4 @@ class AppKernel extends Kernel
     {
         return sys_get_temp_dir().'/VivaitAuthBundle/logs';
     }
+}
