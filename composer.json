@@ -19,9 +19,7 @@
          "stof/doctrine-extensions-bundle": "~1.1",
          "vivait/bootstrap-bundle": "~1.1",
          "vivait/common": "~2.0",
-         "jms/serializer": "~0.16",
-        "symfony/symfony":               "~2.1",
-        "sensio/framework-extra-bundle": "~2.1"
+         "jms/serializer": "~0.16"
     },
     "require-dev": {
         "behat/behat":                   "~2.4",
