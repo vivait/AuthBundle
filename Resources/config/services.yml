@@ -30,3 +30,12 @@ services:
         arguments: ['@security.context', '%vivait.auth.license_warning%']
         tags:
             - { name: kernel.event_listener, event: vivait.bootstrap.menu_configure, priority: -1, method: onMenuConfigure }
+
+    vivait_auth.user.password_hash_listener:
+              class: Vivait\AuthBundle\EventListener\PasswordHashListener
+              public: false
+              tags:
+                  - { name: doctrine.event_subscriber }
+                  - { name: remove-when-missing, service: doctrine }
+                  - { name: remove-when-missing, service: security.encoder_factory }
+              arguments: ['@security.encoder_factory']

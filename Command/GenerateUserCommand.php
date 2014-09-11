@@ -97,18 +97,13 @@
 			$user->setUsername($username);
 			$user->setActive(true);
 			$user->setEmail($email);
+            $user->setPassword($password);
 			$user->setInitials($initials);
 			$user->addGroup($group);
 
 			if($tenant) {
 				$user->addTenant($tenant);
 			}
-
-			$factory = $this->getContainer()->get('security.encoder_factory');
-			$encoder = $factory->getEncoder($this);
-
-			$user->newSalt();
-			$user->setPassword($encoder->encodePassword($password, $user->getSalt()));
 
 			#persist
 			$em = $this->getContainer()->get('doctrine')->getManager();

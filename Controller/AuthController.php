@@ -81,8 +81,7 @@ class AuthController extends Controller {
 					$form->get('newpassword1')->addError(new FormError('Your new password must be at least 8 letters!'));
 				} elseif ($data['newpassword1'] == $data['newpassword2']) {
 					#both new passwords match
-					$user->newSalt();
-					$user->setPassword($encoder->encodePassword($data['newpassword1'], $user->getSalt()));
+                    $user->setPassword($data['newpassword1']);
 
 					#persist
 					$em = $this->getDoctrine()->getManager();

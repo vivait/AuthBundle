@@ -111,7 +111,6 @@ class AuthContext extends BehatContext {
 			$users = $alice->thereAreTheFollowing('VivaitAuthBundle:User', $table);
 
 			foreach ($users as $user) {
-				$user->hashPassword($this->getContainer()->get('security.encoder_factory'));
 
 				if (!$user->getTenants()->count()) {
 					$tenant = $this->getManager()->getRepository('VivaitAuthBundle:Tenant')->findDefaultTenant();
