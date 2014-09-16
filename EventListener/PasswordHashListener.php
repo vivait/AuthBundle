@@ -29,7 +29,6 @@ class PasswordHashListener implements EventSubscriber
     {
         return array(
             Events::prePersist,
-            Events::preUpdate,
         );
     }
 
@@ -42,19 +41,6 @@ class PasswordHashListener implements EventSubscriber
         }
 
         $this->updatePasswordHash($entity);
-    }
-
-    public function preUpdate(PreUpdateEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$entity instanceof BaseUser) {
-            return;
-        }
-
-        $this->updatePasswordHash($entity);
-
-        $args->setNewValue('password', $entity->getPassword());
     }
 
     private function updatePasswordHash(BaseUser $entity)
