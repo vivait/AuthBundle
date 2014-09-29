@@ -1,5 +1,7 @@
 Viva IT - Authentication Bundle
 ============
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vivait/AuthBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vivait/AuthBundle/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/vivait/AuthBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/vivait/AuthBundle/build-status/master)
 
 Installation
 ------------
