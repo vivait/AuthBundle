@@ -1,5 +1,5 @@
 # Authentication Bundle
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a0d01be7-3308-4c87-90e3-b87bb38807b2/small.png)](https://insight.sensiolabs.com/projects/a0d01be7-3308-4c87-90e3-b87bb38807b2)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a0d01be7-3308-4c87-90e3-b87bb38807b2/mini.png)](https://insight.sensiolabs.com/projects/a0d01be7-3308-4c87-90e3-b87bb38807b2)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vivait/AuthBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vivait/AuthBundle/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/vivait/AuthBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/vivait/AuthBundle/build-status/master)
 
